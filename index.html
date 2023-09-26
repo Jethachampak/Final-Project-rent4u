@@ -14,6 +14,17 @@
 
   <title>Rent4u</title>
 
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+  integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+  crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+  integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+  crossorigin="anonymous"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+  integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+
+
   <!-- slider stylesheet -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
 
@@ -27,6 +38,90 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+  <script>
+    function f1()
+    {
+      console.log("hhhhh");
+      let cars = {TRUCK:800 , MINIVAN:100,JEEP:300,SUV:400,HATCHBACK:450,WAGON:200};
+      let d1=new Date(document.getElementById('pd').value);
+      let d2=new Date(document.getElementById('rd').value);
+      console.log(d1,d2);
+      let mail = document.getElementById('mail-id1').value;
+      console.log(mail);
+      const today=new Date();
+      var regmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+      console.log(mail.match(regmail))
+      if( (!isNaN(d2)) && (!isNaN(d1)) && d1.getTime()>=today.getTime() && mail.match(regmail))
+      {
+      if(d2.getTime()>d1.getTime())
+      {
+      console.log(d1,d2);
+      let flag=1;
+      console.log(""+mail);
+      console.log("Booking successful for "+document.getElementById('vname').innerText+" which will cost you "+cars[""+document.getElementById('vname').innerText]+"$ between the dates "+d1.getDate()+"-"+d1.getMonth()+"-"+d1.getFullYear()+" and "+d2.getDate()+"-"+d2.getMonth()+"-"+d2.getFullYear());
+      if(flag==1)
+      {
+          emailjs.send("service_r7qy9d3","template_5j3gsup",{
+              from_name: "Dhruvchandra",
+              to_name: ""+mail,
+              to:mail,
+              message: "Booking successful for "+document.getElementById('vname').innerText+" which will cost you "+cars[""+document.getElementById('vname').innerText]+"$ between the dates "+d1.getDate()+"-"+d1.getMonth()+"-"+d1.getFullYear()+" and "+d2.getDate()+"-"+d2.getMonth()+"-"+d2.getFullYear(),
+              reply_to: mail,
+              });
+            }
+            }
+            else{
+              alert("Return date must be after booking date");
+
+            }
+          }
+          else{
+            alert("either date or mail wrong");
+
+          }
+        }
+
+
+
+        function f2()
+    {
+      console.log("hhhhh");
+      let mob = document.getElementById('inputSubject4').value;
+      let mail = document.getElementById('inputEmail4').value;
+      let name = document.getElementById('inputName4').value;
+      let msg = document.getElementById('inputMessage').value;
+      var regmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
+
+      console.log(mob,mail,name,msg);
+     
+      var regmob = /^[6-9][0-9]{9}$/;
+
+      console.log(mail.match(regmail))
+      if(name!="" && mob.match(regmob) && mail.match(regmail))
+      {
+     
+      let flag=1;
+      console.log("hello "+name+"("+mail+") to rent4u, Your mobile no is = "+mob+" your msg is received , you can ask queries to our bot in website : https://jolly-sky-0b0013310.3.azurestaticapps.net/");
+      if(flag==1)
+      {
+          emailjs.send("service_r7qy9d3","template_5j3gsup",{
+              from_name: "Dhruvchandra",
+              to_name: ""+name,
+              to:mail,
+              message:"hello "+name+"("+mail+") to rent4u, Your mobile no is = "+mob+" your msg is received , you can ask queries to our bot in website : https://jolly-sky-0b0013310.3.azurestaticapps.net/",
+              reply_to: mail,
+              });
+            }
+           
+          }
+          else{
+            alert("Pls fill form correctly");
+
+          }
+        }
+  </script>
 </head>
 
 <body>
@@ -133,32 +228,132 @@
         <div class="form-row">
           <div class="col-lg-8">
             <div class="form-row">
-              <div class="col-md-6">
-                <label for="parkingName">Pick Up Locaion</label>
-                <input type="text" class="form-control" placeholder="acb ">
+              <div class="col-md-8">
+                <label >Email-id</label>
+                <input type="text" class="form-control" id="mail-id1" placeholder="abc@gmail.com ">
               </div>
-              <div class="col-md-6">
-                <label for="parkingNumber">Drop Location</label>
-                <input type="text" class="form-control" placeholder="acb ">
+              <div class="col-md-4 ">
+                <label >Select Car</label>
+                <button class="btn dropdown-toggle d-flex align-items-center bg-white border border-dark border-2" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            <a class="dropdown-item d-flex" href="#" id="currentCommunity">
+                <img class="sub_photo align-self-center" src="images/r-1.png">
+                <div class="cname_nom">
+                    <div class="cname" id="vname" >
+                        TRUCK
+                    </div>
+                </div>
+            </a>
+        </button>
+        <ul class="dropdown-menu bg-white" id="CarList">
+            <li class="ms-2">
+                <b>
+                    Cars
+                </b>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex"  onclick="df1(this)">
+                    <img class="sub_photo align-self-center" src="images/r-1.png">
+                    <div class="cname_nom">
+                        <div class="cname">
+                            TRUCK
+                        </div>
+                        <div class="nom">
+                            800$
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex" onclick="df1(this)">
+                    <img class="sub_photo align-self-center" src="images/r-2.png" >
+                    <div class="cname_nom">
+                        <div class="cname">
+                            MINIVAN
+                        </div>
+                        <div class="nom">
+                            100$
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a class="dropdown-item d-flex" onclick="df1(this)">
+                    <img class="sub_photo align-self-center" src="images/r-3.png">
+                    <div class="cname_nom">
+                        <div class="cname">
+                            JEEP
+                        </div>
+                        <div class="nom">
+                            300$
+                        </div>
+                    </div>
+                </a>
+            </li>
+            <li>
+              <a class="dropdown-item d-flex" onclick="df1(this)">
+                  <img class="sub_photo align-self-center" src="images/r-4.png">
+                  <div class="cname_nom">
+                      <div class="cname">
+                          SUV
+                      </div>
+                      <div class="nom">
+                          400$
+                      </div>
+                  </div>
+              </a>
+          </li>
+          <li>
+            <a class="dropdown-item d-flex" onclick="df1(this)">
+                <img class="sub_photo align-self-center" src="images/r-5.png">
+                <div class="cname_nom">
+                    <div class="cname">
+                        HATCHBACK
+                    </div>
+                    <div class="nom">
+                        450$
+                    </div>
+                </div>
+            </a>
+        </li>
+        <li>
+          <a class="dropdown-item d-flex" onclick="df1(this)">
+              <img class="sub_photo align-self-center" src="images/r-6.png">
+              <div class="cname_nom">
+                  <div class="cname">
+                      WAGON
+                  </div>
+                  <div class="nom">
+                      200$
+                  </div>
               </div>
+          </a>
+      </li>
+        </ul>
+
+              </div>
+              
             </div>
             <div class="form-row">
               <div class="col-md-6">
-                <label for="parkingName">Pick Up Date</label>
-                <input type="text" class="form-control" placeholder="07/09/2020">
+                <label >Pick Up Date</label>
+                <input type="text" class="form-control" id="pd" placeholder="yyyy-mm-dd">
               </div>
               <div class="col-md-6">
-                <label for="parkingNumber">Return Date</label>
-                <input type="text" class="form-control" placeholder="07/09/2020">
+                <label >Return Date</label>
+                <input type="text" class="form-control" id="rd" placeholder="yyyy-mm-dd">
               </div>
             </div>
           </div>
-          <div class="col-lg-4">
-            <div class="btn-container">
-              <button type="submit" class="">
-                Search
-              </button>
+          <div class="col-lg-4" id="sub">
+            <div class="btn-container " >
+              <input type="button" onclick="f1()" value="Book"  class="btn btn-primary">
+              
             </div>
+            
+  
+
+            
           </div>
         </div>
 
@@ -167,7 +362,7 @@
     <div class="img-box">
       <img src="images/book-car.png" alt="">
     </div>
-  </section>
+  </section> 
 
   <!-- end book section -->
 
@@ -298,8 +493,8 @@ Users can choose from range of cars according to their need.Cars will be deliver
             <img src="images/r-1.png" alt="">
           </div>
           <div class="price">
-            <a href="">
-              Rent $200
+            <a >
+              Rent $800
             </a>
           </div>
         </div>
@@ -308,8 +503,8 @@ Users can choose from range of cars according to their need.Cars will be deliver
             <img src="images/r-2.png" alt="">
           </div>
           <div class="price">
-            <a href="">
-              Rent $200
+            <a >
+              Rent $100
             </a>
           </div>
         </div>
@@ -318,8 +513,8 @@ Users can choose from range of cars according to their need.Cars will be deliver
             <img src="images/r-3.png" alt="">
           </div>
           <div class="price">
-            <a href="">
-              Rent $200
+            <a >
+              Rent $300
             </a>
           </div>
         </div>
@@ -328,8 +523,8 @@ Users can choose from range of cars according to their need.Cars will be deliver
             <img src="images/r-4.png" alt="">
           </div>
           <div class="price">
-            <a href="">
-              Rent $200
+            <a >
+              Rent $400
             </a>
           </div>
         </div>
@@ -338,8 +533,8 @@ Users can choose from range of cars according to their need.Cars will be deliver
             <img src="images/r-5.png" alt="">
           </div>
           <div class="price">
-            <a href="">
-              Rent $200
+            <a >
+              Rent $450
             </a>
           </div>
         </div>
@@ -348,14 +543,14 @@ Users can choose from range of cars according to their need.Cars will be deliver
             <img src="images/r-6.png" alt="">
           </div>
           <div class="price">
-            <a href="">
+            <a >
               Rent $200
             </a>
           </div>
         </div>
       </div>
       <div class="btn-box">
-        <a href="">
+        <a href="car.html">
           See More
         </a>
       </div>
@@ -465,8 +660,7 @@ Users can choose from range of cars according to their need.Cars will be deliver
     
   </section>
   <div style="margin-bottom: 20px; display: flex;justify-content: center;">
-    <iframe src="https://webchat.botframework.com/embed/Question-Answer-frt-rent4you-bot-bot?s=MIz00Np6h1k.3PFGnm7aDCNKSzvNz_qyHUkEY_8aPYO2bygnVRZo0aM" class="w-75" style="height: 400px;"></iframe>
-
+    <iframe src="https://webchat.botframework.com/embed/Question-Answer-frt-rent4you-bot-bot?s=c8xbYXGANf8.Ax0vAWrM-Ig0BSYjJSGFuwEtQu5ISuPyJQqfwtZh5ic" class="w-75" style="height: 400px;"></iframe>
   </div>
 
 
@@ -661,7 +855,7 @@ Users can choose from range of cars according to their need.Cars will be deliver
     <div class="container">
       <div class="heading_container">
         <h2>
-          Request A call back
+          Request A Reach
         </h2>
       </div>
       <div class="row">
@@ -682,10 +876,13 @@ Users can choose from range of cars according to their need.Cars will be deliver
                 </div>
               </div>
               <div class="form-group">
+              
                 <input type="text" class="form-control" id="inputMessage" placeholder="Message">
               </div>
               <div class="d-flex justify-content-center">
-                <button type="submit" class="">Send</button>
+                <input type="button" onclick="f2()" value="Send"  class="btn btn-primary">
+
+              
               </div>
             </form>
           </div>
@@ -774,9 +971,22 @@ Users can choose from range of cars according to their need.Cars will be deliver
 
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.js"></script>
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
+   <script type="text/javascript"
+   src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js">
+</script>
+<script type="text/javascript">
+(function(){
+ emailjs.init("wKCdvqc06xSjidWNY");
+})();
+</script>
+
   <script src="js/custom.js"></script>
+  <script src="js/book.js"></script>
+  <script src="js/create_post.js"></script>
+
 
 
 </body>
