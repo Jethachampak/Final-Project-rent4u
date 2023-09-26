@@ -1,9 +1,14 @@
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: "Poppins",
+ sans-serif;
   color: #0c0c0c;
   background-color: #ffffff;
 }
-
+.sub_photo {
+  
+  width: 40px;
+  height: 20px;
+}
 .layout_padding {
   padding-top: 90px;
   padding-bottom: 90px;
@@ -29,6 +34,17 @@ body {
 .layout_padding-bottom {
   padding-bottom: 90px;
 }
+.cname_nom {
+  margin-left: 5px;
+}
+
+.cname {
+  font-weight: 500;
+}
+
+.nom {
+  font-weight: 200;
+}
 
 .heading_container {
   display: -webkit-box;
@@ -46,7 +62,7 @@ body {
 .heading_container h2 {
   font-weight: bold;
   color: #000000;
-  position: relative;
+  
 }
 
 /*header section*/
@@ -85,7 +101,8 @@ body {
   padding: 0px 25px;
   color: #fefeff;
   text-align: center;
-  font-family: "Roboto", sans-serif;
+  font-family: "Roboto",
+ sans-serif;
 }
 
 .custom_menu-btn {
@@ -300,7 +317,8 @@ a:focus {
 }
 
 .slider_section .slider_container .detail_container .detail-box h1 {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans",
+ sans-serif;
   text-transform: uppercase;
   font-weight: bold;
   color: #fefdfc;
@@ -873,7 +891,8 @@ a:focus {
 }
 
 .client_section {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Open Sans",
+ sans-serif;
 }
 
 .client_section .heading_container {
