@@ -6,6 +6,7 @@ Rent-4-u provides car rental services with user-friendly booking system and mobi
 This is web based car rental application hosted on github and deployed on Azure as a static web app service
 
 ## Project Link - https://jolly-sky-0b0013310.3.azurestaticapps.net/ 
+How to book a car? - https://1drv.ms/v/s!AurjXb6v3DYKmBivkRx31nqMRNNC?e=fYh5Uz
 
 ### Used Azure technologies
 
